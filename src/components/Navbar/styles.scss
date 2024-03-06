@@ -1,0 +1,26 @@
+header {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  background-color: rgb(218, 255, 238);
+  position: fixed;
+  height: 100vh;
+  padding: 1rem;
+  a {
+    text-decoration: none;
+    color: black;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    transition: all 0.1s ease-in-out;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    &:hover {
+      background-color: rgb(4, 103, 70);
+      color: #fff;
+    }
+    &.active {
+      background-color: rgb(4, 103, 70);
+      color: #fff;
+    }
+  }
+}
