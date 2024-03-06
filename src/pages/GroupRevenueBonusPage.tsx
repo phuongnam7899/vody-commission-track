@@ -3,7 +3,6 @@ import { useOrders } from "../hooks/useOrders";
 import { useUsers } from "../hooks/useUsers";
 import { calculateUsersBranchRevenue } from "../utils/monthly-income-per-income/calculateUsersBranchRevenue";
 import { User } from "../types/users";
-import { formatMoney } from "../utils/moneyFormat";
 import { GroupRevenueBonusTable } from "../components/GroupRevenueBonusTable";
 
 type UserWithBranchRevenue = User & { branchRevenue: number };
