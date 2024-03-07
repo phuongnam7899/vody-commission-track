@@ -16,7 +16,6 @@ export const LeaderBonusPage = () => {
     return <div>Loading...</div>;
   }
   const userLeaderStats: any = calculateLeaderStats(users, orders);
-  console.log(userLeaderStats);
   return (
     <div>
       <table>

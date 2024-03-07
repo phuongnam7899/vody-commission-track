@@ -17,7 +17,6 @@ export const calculateUserCommission = (
     };
   });
   for (let order of ordersWithinMonth) {
-    // console.log("order", order);
     let buyerInfo = usersObject[order.username];
     let buyerLevelNumber = convertLevelToNumber(buyerInfo.level);
     let parentUsername = buyerInfo.parent;
@@ -41,17 +40,10 @@ export const calculateUserCommission = (
           orderValue: order.value,
           commissionPercent: rate,
         });
-        // console.log(
-        //   `user ${usersObject[buyerInfo.parent].username} (${
-        //     usersObject[buyerInfo.parent].star
-        //   })`
-        // );
-        // console.log(`Get (${rate}%) (No skip level) +`);
         starLeft = Math.min(
           newStarLeft,
           usersObject[buyerInfo.parent].star - buyerInfo.star
         );
-        // console.log("starLeft", starLeft);
       }
       if (buyerLevelNumber + 2 === parentLevelNumber) {
         const { rate } = calculateCommissionRate(
@@ -59,9 +51,6 @@ export const calculateUserCommission = (
           parentInfo.star,
           starLeft
         );
-        // console.log("buyerInfo", buyerInfo);
-
-        // console.log("user", usersObject[buyerInfo.parent]);
 
         usersObject[buyerInfo.parent].commission.push({
           order: order.id,
@@ -71,8 +60,6 @@ export const calculateUserCommission = (
           orderValue: order.value,
           commissionPercent: rate * 2,
         });
-        // console.log("user", usersObject[buyerInfo.parent].username);
-        // console.log(`Get (${rate * 2}%) (Skip 1 level)`);
         starLeft = 0;
       }
       buyerInfo = parentInfo;

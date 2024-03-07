@@ -10,11 +10,8 @@ export const calculateUsersBranchRevenue = (users: User[], orders: Order[]) => {
   for (let user of users) {
     userTotalDirectRevenue[user.username] = 0;
   }
-  console.log("users", users);
 
   for (let order of orders) {
-    console.log("user.username", order.username);
-
     const buyerInfo = users.find((user) => user.username === order.username);
     if (buyerInfo!.parent) {
       userTotalDirectRevenue[buyerInfo!.parent] += order.value;

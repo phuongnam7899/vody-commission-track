@@ -11,9 +11,16 @@ interface Props {
   year: number;
   orders: Order[];
   users: User[];
+  bonusTracker: any;
 }
 
-export const MonthlyCommission = ({ month, year, orders, users }: Props) => {
+export const MonthlyCommission = ({
+  month,
+  year,
+  orders,
+  users,
+  bonusTracker,
+}: Props) => {
   //   const ordersUntilThisMonth = orders.filter((order) => {
   //     return order.createdAt.isBefore(new Date(year, month, 1));
   //   });
@@ -55,6 +62,8 @@ export const MonthlyCommission = ({ month, year, orders, users }: Props) => {
             );
           })
           .map(({ username, level, star, branchValue }: any, index) => {
+            const paidCommission =
+              bonusTracker[username][`m${month}y${year}`] || 0;
             const userTotalCommission = calculateTotalCommission(
               userWithCommission,
               username
@@ -64,12 +73,24 @@ export const MonthlyCommission = ({ month, year, orders, users }: Props) => {
             }
             return (
               <div style={{ marginBottom: "1rem" }}>
-                <h2>
+                <h2
+                  className={
+                    paidCommission < userTotalCommission ? "not-paid" : ""
+                  }
+                >
                   #{index + 1} {username} - {level} {star}⭐
                 </h2>
                 <h2>
-                  Doanh thu nhánh: {formatMoney(branchValue)} - Tổng hoa hồng:{" "}
-                  {formatMoney(userTotalCommission)}
+                  Doanh thu nhánh: {formatMoney(branchValue)} <br /> HH đã trả:{" "}
+                  {formatMoney(paidCommission)} /{" "}
+                  {formatMoney(userTotalCommission)} -{" "}
+                  <span
+                    className={
+                      paidCommission < userTotalCommission ? "not-paid" : ""
+                    }
+                  >
+                    Còn lại: {formatMoney(userTotalCommission - paidCommission)}
+                  </span>
                 </h2>
                 <UserCommissionDetailTable
                   username={username}
