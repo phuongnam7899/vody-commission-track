@@ -97,6 +97,7 @@ export const MonthlyIncomePerIncome = ({
               if (incomePerIncome === 0) {
                 return null;
               }
+
               const paidIncomePerIncome =
                 incomePerIncomePaidTrackers[username][`m${month}y${year}`];
               return (

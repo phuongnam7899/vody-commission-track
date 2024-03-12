@@ -16,15 +16,17 @@ export const IncomePerIncomePage = () => {
   const { incomePerIncomePaidTrackers, fetchIncomePerIncomePaidTracker } =
     useIncomePerIncomePaidTracker();
 
-  console.log("incomePerIncomePaidTrackers", incomePerIncomePaidTrackers);
-
   // TODO: Validate users and orders
   useEffect(() => {
     fetchUsers();
     fetchOrders();
     fetchIncomePerIncomePaidTracker();
   }, []);
-  if (users.length === 0 || orders.length === 0) {
+  if (
+    users.length === 0 ||
+    orders.length === 0 ||
+    Object.keys(incomePerIncomePaidTrackers).length === 0
+  ) {
     return <div>Loading...</div>;
   }
 

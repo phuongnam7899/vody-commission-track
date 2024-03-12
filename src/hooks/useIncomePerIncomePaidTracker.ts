@@ -8,10 +8,6 @@ export const useIncomePerIncomePaidTracker = () => {
     const fetchedIncomePerIncomePaidTrackers = await fetchCSVData(
       sheetsLinks.incomePerIncomePaidTracker
     );
-    console.log(
-      "fetchedIncomePerIncomePaidTrackers",
-      fetchedIncomePerIncomePaidTrackers
-    );
 
     const newBonusTrackers: any = {};
     fetchedIncomePerIncomePaidTrackers.forEach((bonusTracker: any) => {
