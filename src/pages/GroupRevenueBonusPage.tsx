@@ -16,10 +16,19 @@ export const GroupRevenueBonusPage = () => {
     fetchOrders();
   }, []);
 
+  const internalOrder = orders.filter((order) => {
+    return (
+      order.productType === "nft" ||
+      order.productType === "milk" ||
+      order.productType === "waterPurifier"
+    );
+  });
+
   const userTotalBranchRevenue: any = calculateUsersBranchRevenue(
     users,
-    orders
+    internalOrder
   );
+
   const usersWithChildrenRevenue = users.map((user: User) => {
     const children: User[] = users.filter(
       (u: User) => u.parent === user.username

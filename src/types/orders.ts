@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 
-export type ProductType = "vip" | "nft" | "investVD";
+export type ProductType = "vip" | "nft" | "investVD" | "milk" | "waterPurifier";
 
 export type Order = {
   id: string;

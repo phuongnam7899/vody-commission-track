@@ -8,15 +8,19 @@ const productTypeMap: { [key: string]: string } = {
   "Thẻ VIP": "vip",
   NFT: "nft",
   "Hũ Vody": "investVD",
+  "Sữa Non": "milk",
+  "Máy lọc nước": "waterPurifier",
 };
 export const productTypeMapRevert: { [key: string]: string } = {
   vip: "Thẻ VIP",
   nft: "NFT",
+  milk: "Sữa Non",
+  waterPurifier: "Máy lọc nước",
   investVD: "Hũ Vody",
 };
 
 export const useOrders = () => {
-  const [orders, setOrders] = useState([]);
+  const [orders, setOrders] = useState<Order[]>([]);
 
   const fetchOrders = async () => {
     const fetchedOrders = await fetchCSVData(sheetsLinks.orders);

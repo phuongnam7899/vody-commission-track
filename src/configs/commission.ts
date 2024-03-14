@@ -11,4 +11,12 @@ export const commission = {
     direct: 0.05,
     forUpper: [0.01, 0.015, 0.02],
   },
+  milk: {
+    direct: 0.05,
+    forUpper: [0.01, 0.015, 0.02],
+  },
+  waterPurifier: {
+    direct: 0.05,
+    forUpper: [0.01, 0.015, 0.02],
+  },
 };
