@@ -43,6 +43,8 @@ export const MonthlyCommission = ({
       0
     );
   };
+
+  if (!Object.keys(bonusTracker).length) return null;
   return (
     <div style={{ borderBottom: "1px solid gray", paddingBottom: "2rem" }}>
       <h1

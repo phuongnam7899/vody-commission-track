@@ -26,15 +26,17 @@ export const useOrders = () => {
     const fetchedOrders = await fetchCSVData(sheetsLinks.orders);
 
     setOrders(
-      fetchedOrders.map((order: any): Order => {
-        return {
-          createdAt: dayjs(new Date(order["Thời gian mua"])),
-          id: order["ID"],
-          username: order["Người mua"],
-          productType: productTypeMap[order["Loại sản phẩm"]] as ProductType, // Added type assertion
-          value: parseInt(order["Giá trị"], 10),
-        };
-      })
+      fetchedOrders
+        .map((order: any): Order => {
+          return {
+            createdAt: dayjs(new Date(order["Thời gian mua"])),
+            id: order["ID"],
+            username: order["Người mua"],
+            productType: productTypeMap[order["Loại sản phẩm"]] as ProductType, // Added type assertion
+            value: parseInt(order["Giá trị"], 10),
+          };
+        })
+        .filter((order: Order) => !!order.id) // Added filter to remove undefined productType
     );
   };
   return { orders, fetchOrders };
